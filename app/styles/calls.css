@@ -1,0 +1,126 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  height: 60px;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout {
+  display: flex;
+  flex: 1;
+}
+
+.left-sidebar {
+  width: 300px;
+  background-color: #2196f3;
+  color: hwb(0 0% 100%);
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-sidebar {
+  width: 200px;
+  background-color: #ffc107;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.response {
+  cursor: pointer;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1976d2;
+  color: white;
+  border-bottom: 1px solid #1565c0;
+  height: 30px;
+}
+
+div.response:hover {
+  background-color: yellow;
+  color: black;
+}
+
+div.response.selected {
+  background-color: orange;
+}
+
+div.requestTime {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+h2.messageId {
+  font-size: 13px;
+}
+
+div.button {
+  height: 20px;
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: white;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+div.blue {
+  background-color: #007bff;
+}
+
+div.red {
+  background-color: red;
+}
+
+div.grey {
+  background-color: grey;
+}
+
+.delete {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  color: black;
+}
+
+.delete:hover {
+  background-color: red;
+  color: white;
+}
+
+div.spacer {
+  width: 5px;
+}
