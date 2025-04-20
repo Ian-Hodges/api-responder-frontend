@@ -29,7 +29,7 @@ interface Response {
   body: string;
 }
 
-const url = "https://api.apiresponder.net";
+const url = "https://api.apiresponder.net/calls";
 
 export async function getAllCallsByResponderId(
   responderId: string
