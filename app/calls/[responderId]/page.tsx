@@ -1,5 +1,4 @@
 import "@/styles/calls.css";
-import { getAllCallsByResponderId } from "@/lib/api-responder";
 import Calls from "./components/calls";
 
 type Props = {
@@ -10,7 +9,6 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { responderId } = await params
-  const initialCalls = await getAllCallsByResponderId(responderId);
 
-  return <Calls initialCalls={initialCalls} />;
+  return <Calls responderId={responderId} />;
 }
