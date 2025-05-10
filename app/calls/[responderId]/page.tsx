@@ -1,14 +1,12 @@
 import "@/styles/calls.css";
 import Calls from "./components/calls";
 
-type Props = {
-  params: {
-    responderId: string;
-  };
+type PageProps = {
+  params: Promise<{ responderId: string }>;
 };
 
-export default async function Page({ params }: Props) {
-  const { responderId } = await params
+export default async function Page({ params }: PageProps) {
+  const { responderId } = await params;
 
   return <Calls responderId={responderId} />;
 }
