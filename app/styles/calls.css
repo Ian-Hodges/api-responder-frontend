@@ -21,11 +21,20 @@ html {
   flex: 1;
 }
 
+.auto-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 10px;
+}
+
 .left-sidebar {
   width: 300px;
   background-color: #2196f3;
   color: hwb(0 0% 100%);
   display: flex;
+  flex-direction: column;
 }
 
 .content {
