@@ -16,8 +16,8 @@ export default function List({
   selectedCall?: Call;
   setSelectedCall: (call: Call) => void;
 }) {
-  async function deleteTodo(id: string) {
-    await deleteCall("moo", id);
+  async function deleteTodo(responderId: string, id: string) {
+    await deleteCall(responderId, id);
     setCurrentCalls((prev) =>
       prev.filter((call) => call.MessageId !== id)
     );
@@ -94,7 +94,7 @@ export default function List({
           <div className="spacer" />
           <div
             className="grey button delete"
-            onClick={() => deleteTodo(call.MessageId)}
+            onClick={() => deleteTodo(call.ResponderId, call.MessageId)}
           >
             <img src="/bin.svg"></img>
           </div>
