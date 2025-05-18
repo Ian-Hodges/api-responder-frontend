@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Calls({ responderId }: { responderId: string }) {
   const [currentCalls, setCurrentCalls] = useState<Array<Call>>([]);
-  const [selectedCall, setSelectedCall] = useState<Call>();
+  const [selectedCall, setSelectedCall] = useState<Call | undefined>();
   const [autoRefresh, setAutoRefresh] = useState(false);
 
   const fetchCalls = async () => {

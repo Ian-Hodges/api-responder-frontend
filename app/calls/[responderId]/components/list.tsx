@@ -14,13 +14,17 @@ export default function List({
     updater: (prev: Call[]) => Call[]
   ) => void;
   selectedCall?: Call;
-  setSelectedCall: (call: Call) => void;
+  setSelectedCall: (call: Call | undefined) => void;
 }) {
   async function deleteTodo(responderId: string, id: string) {
     await deleteCall(responderId, id);
     setCurrentCalls((prev) =>
       prev.filter((call) => call.MessageId !== id)
     );
+
+    if (selectedCall?.MessageId === id) {
+      setSelectedCall(undefined);
+    }
   }
 
   function parseCLFDate(clfDateString: string): string {
@@ -83,9 +87,7 @@ export default function List({
         <div
           key={call.MessageId}
           onClick={() => setSelectedCall(call)}
-          className={`response ${
-            selectedCall?.MessageId === call.MessageId ? "selected" : ""
-          }`}
+          className={`response ${selectedCall?.MessageId === call.MessageId ? "selected" : ""}`}
         >
           <div className="requestTime">
             {parseCLFDate(call.Request.requestContext.requestTime)}
@@ -94,7 +96,10 @@ export default function List({
           <div className="spacer" />
           <div
             className="grey button delete"
-            onClick={() => deleteTodo(call.ResponderId, call.MessageId)}
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteTodo(call.ResponderId, call.MessageId)
+            }}
           >
             <img src="/bin.svg"></img>
           </div>
