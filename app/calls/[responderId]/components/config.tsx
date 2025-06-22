@@ -38,7 +38,6 @@ export default function Config({
       responderId,
       parseResult.data.responseStatus
     );
-    console.log("API response:", result);
   };
 
   return (

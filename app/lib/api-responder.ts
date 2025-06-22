@@ -69,7 +69,7 @@ export async function deleteCall(
 export async function updateResponseStatus(
   responderId: string,
   responseStatus: number
-): Promise<RawCall | undefined> {
+) {
   console.log("Updating response status for responderId:", responderId, "to status:", responseStatus);
   const data = await fetch(`${url}/${responderId}/responseStatus/${responseStatus}`, {
     method: "POST",
@@ -79,7 +79,4 @@ export async function updateResponseStatus(
     console.error("Failed to update response status:", data.statusText);
     throw new Error(`Failed to update response status: ${data.statusText}`);
   }
-  const moo = await data.text();
-  console.log("Parsed response from updateResponseStatus:", moo);
-  return moo as RawCall;
 }
