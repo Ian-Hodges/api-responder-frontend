@@ -2,14 +2,16 @@
 
 import "@/styles/calls.css";
 import { Checkbox } from "@aws-amplify/ui-react";
-import { Call, getAllCallsByResponderId } from "@/lib/api-responder";
+import { Call, ResponderConfig, getAllCallsByResponderId, getConfigByResponderId } from "@/lib/api-responder";
 import List from "./list";
 import Info from "./info";
 import { useEffect, useState } from "react";
+import Config from "./config";
 
 export default function Calls({ responderId }: { responderId: string }) {
   const [currentCalls, setCurrentCalls] = useState<Array<Call>>([]);
   const [selectedCall, setSelectedCall] = useState<Call | undefined>();
+  const [currentConfig, setCurrentConfig] = useState<ResponderConfig>();
   const [autoRefresh, setAutoRefresh] = useState(false);
 
   const fetchCalls = async () => {
@@ -21,8 +23,18 @@ export default function Calls({ responderId }: { responderId: string }) {
     }
   };
 
+  const fetchConfig = async () => {
+    try {
+      const res = await getConfigByResponderId(responderId);
+      setCurrentConfig(res);
+    } catch (err) {
+      console.error("Failed to fetch config:", err);
+    }
+  };
+
   useEffect(() => {
     fetchCalls();
+    fetchConfig();
 
     if (!autoRefresh) return;
 
@@ -54,7 +66,13 @@ export default function Calls({ responderId }: { responderId: string }) {
         <div className="content">
           <Info call={selectedCall} />
         </div>
-        <div className="right-sidebar">Right Sidebar</div>
+        <div className="right-sidebar">
+          <Config
+            responderId={responderId}
+            responderConfig={currentConfig}
+            setResponderConfig={setCurrentConfig}
+          />
+        </div>
       </div>
     </>
   );

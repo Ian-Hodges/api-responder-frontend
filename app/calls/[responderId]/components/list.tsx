@@ -19,10 +19,10 @@ export default function List({
   async function deleteTodo(responderId: string, id: string) {
     await deleteCall(responderId, id);
     setCurrentCalls((prev) =>
-      prev.filter((call) => call.MessageId !== id)
+      prev.filter((call) => call.messageId !== id)
     );
 
-    if (selectedCall?.MessageId === id) {
+    if (selectedCall?.messageId === id) {
       setSelectedCall(undefined);
     }
   }
@@ -85,20 +85,20 @@ export default function List({
     <main>
       {calls.map((call) => (
         <div
-          key={call.MessageId}
+          key={call.messageId}
           onClick={() => setSelectedCall(call)}
-          className={`response ${selectedCall?.MessageId === call.MessageId ? "selected" : ""}`}
+          className={`response ${selectedCall?.messageId === call.messageId ? "selected" : ""}`}
         >
           <div className="requestTime">
-            {parseCLFDate(call.Request.requestContext.requestTime)}
+            {parseCLFDate(call.request.requestContext.requestTime)}
           </div>
-          <div className="blue button">{call.Request.httpMethod}</div>
+          <div className="blue button">{call.request.httpMethod}</div>
           <div className="spacer" />
           <div
             className="grey button delete"
             onClick={(e) => {
               e.stopPropagation();
-              deleteTodo(call.ResponderId, call.MessageId)
+              deleteTodo(call.responderId, call.messageId)
             }}
           >
             <img src="/bin.svg"></img>

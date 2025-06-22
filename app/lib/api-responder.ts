@@ -1,15 +1,19 @@
 interface RawCall {
-  ResponderId: string;
-  Request: string;
-  Response: string;
-  MessageId: string;
+  responderId: string;
+  request: string;
+  response: string;
+  messageId: string;
 }
 
 export interface Call {
-  ResponderId: string;
-  Request: Request;
-  Response: Response;
-  MessageId: string;
+  responderId: string;
+  request: Request;
+  response: Response;
+  messageId: string;
+}
+
+export interface ResponderConfig {
+  responseStatus: number;
 }
 
 interface Request {
@@ -40,9 +44,16 @@ export async function getAllCallsByResponderId(
   // Parse the Request and Response fields
   return rawData.map((item) => ({
     ...item,
-    Request: JSON.parse(item.Request),
-    Response: JSON.parse(item.Response),
+    request: JSON.parse(item.request),
+    response: JSON.parse(item.response),
   }));
+}
+
+export async function getConfigByResponderId(
+  responderId: string
+): Promise<ResponderConfig> {
+  const data = await fetch(url + `/${responderId}/config`);
+  return (await data.json()) as ResponderConfig;
 }
 
 export async function deleteCall(
@@ -53,4 +64,22 @@ export async function deleteCall(
     method: "DELETE",
   });
   return await data.json();
+}
+
+export async function updateResponseStatus(
+  responderId: string,
+  responseStatus: number
+): Promise<RawCall | undefined> {
+  console.log("Updating response status for responderId:", responderId, "to status:", responseStatus);
+  const data = await fetch(`${url}/${responderId}/responseStatus/${responseStatus}`, {
+    method: "POST",
+  });
+  console.log("Response from updateResponseStatus:", data);
+  if (!data.ok) {
+    console.error("Failed to update response status:", data.statusText);
+    throw new Error(`Failed to update response status: ${data.statusText}`);
+  }
+  const moo = await data.text();
+  console.log("Parsed response from updateResponseStatus:", moo);
+  return moo as RawCall;
 }
