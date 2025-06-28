@@ -1,6 +1,6 @@
 "use client";
 
-import "@/styles/calls.css";
+import "@/calls/styles/calls.css";
 import { Checkbox } from "@aws-amplify/ui-react";
 import { Call, ResponderConfig, getAllCallsByResponderId, getConfigByResponderId } from "@/lib/api-responder";
 import List from "./list";
@@ -45,7 +45,7 @@ export default function Calls({ responderId }: { responderId: string }) {
 
   return (
     <>
-      <div className="top-bar">Top Bar</div>
+      <div className="top-bar">API Responder "{responderId}"</div>
       <div className="layout">
         <div className="left-sidebar">
           <div className="auto-refresh">

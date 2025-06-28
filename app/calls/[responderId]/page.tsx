@@ -1,4 +1,4 @@
-import "@/styles/calls.css";
+import "@/calls/styles/calls.css";
 import Calls from "./components/calls";
 
 type PageProps = {

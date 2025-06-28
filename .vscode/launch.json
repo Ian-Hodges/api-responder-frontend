@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Next.js",
+            "runtimeExecutable": "/root/.nvm/versions/node/v21.6.2/bin/npm",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            // "port": 9229,
+            "console": "integratedTerminal",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "env": {
+                "NODE_OPTIONS": "--inspect"
+            }
+        },
+        {
+            "type": "msedge",
+            "request": "launch",
+            "name": "Debug Next.js in Edge",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}

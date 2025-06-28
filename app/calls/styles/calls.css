@@ -11,9 +11,11 @@ html {
   height: 60px;
   background-color: #4caf50;
   color: white;
+  font-size: 1.9rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+  padding-left: 1rem;
 }
 
 .layout {
@@ -46,12 +48,10 @@ html {
 }
 
 .right-sidebar {
-  width: 200px;
+  width: 300px;
   background-color: #ffc107;
   color: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 div.response {

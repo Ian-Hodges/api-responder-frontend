@@ -1,6 +1,7 @@
 "use client";
 
-import { number, z } from "zod";
+import "@/calls/styles/config.css";
+import { z } from "zod";
 import { ResponderConfig, updateResponseStatus } from "@/lib/api-responder";
 
 const responseStatusSchema = z.object({
@@ -42,19 +43,23 @@ export default function Config({
 
   return (
     <form onSubmit={handleSubmit}>
-      <header>Response Status</header>
-      <input
-        type="text"
-        name="responseStatus"
-        value={responderConfig?.responseStatus || ""}
-        onChange={(e) =>
-          setResponderConfig({
-            ...responderConfig,
-            responseStatus: Number(e.target.value),
-          })
-        }
-      />
-      <button type="submit">Update</button>
+      <div className="config-item">
+        <header>Response Status</header>
+        <input
+          type="text"
+          name="responseStatus"
+          value={responderConfig?.responseStatus || ""}
+          onChange={(e) =>
+            setResponderConfig({
+              ...responderConfig,
+              responseStatus: Number(e.target.value),
+            })
+          }
+        />
+        <div>
+          <button type="submit">Update</button>
+        </div>
+      </div>
     </form>
   );
 }

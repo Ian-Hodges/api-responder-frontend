@@ -1,7 +1,7 @@
 "use client";
 
 import { Call } from "@/lib/api-responder";
-import "./info.css";
+import "@/calls/styles/info.css";
 
 export default function Info({ call }: { call?: Call }) {
   if (!call) return <p className="info-placeholder">Select a call.</p>;
@@ -47,7 +47,11 @@ export default function Info({ call }: { call?: Call }) {
 
       <div className="info-section">
         <h2>Body</h2>
-        <pre className="info-body">{call.request.body}</pre>
+        <div className="body-table">
+          <div className="body-row">
+            <pre className="info-body">{call.request.body}</pre>
+          </div>
+        </div>
       </div>
     </main>
   );

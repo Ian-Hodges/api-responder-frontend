@@ -1,0 +1,7 @@
+.config-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
