@@ -10,17 +10,13 @@ export default function List({
   setSelectedCall,
 }: {
   calls: Array<Call>;
-  setCurrentCalls: (
-    updater: (prev: Call[]) => Call[]
-  ) => void;
+  setCurrentCalls: (updater: (prev: Call[]) => Call[]) => void;
   selectedCall?: Call;
   setSelectedCall: (call: Call | undefined) => void;
 }) {
   async function deleteTodo(responderId: string, id: string) {
     await deleteCall(responderId, id);
-    setCurrentCalls((prev) =>
-      prev.filter((call) => call.messageId !== id)
-    );
+    setCurrentCalls((prev) => prev.filter((call) => call.messageId !== id));
 
     if (selectedCall?.messageId === id) {
       setSelectedCall(undefined);
@@ -87,18 +83,24 @@ export default function List({
         <div
           key={call.messageId}
           onClick={() => setSelectedCall(call)}
-          className={`response ${selectedCall?.messageId === call.messageId ? "selected" : ""}`}
+          className={`response ${
+            selectedCall?.messageId === call.messageId ? "selected" : ""
+          }`}
         >
           <div className="requestTime">
             {parseCLFDate(call.request.requestContext.requestTime)}
           </div>
-          <div className="blue button">{call.request.httpMethod}</div>
+          <div
+            className={`info-badge method-${call.request.httpMethod.toLowerCase()}`}
+          >
+            {call.request.httpMethod}
+          </div>
           <div className="spacer" />
           <div
             className="grey button delete"
             onClick={(e) => {
               e.stopPropagation();
-              deleteTodo(call.responderId, call.messageId)
+              deleteTodo(call.responderId, call.messageId);
             }}
           >
             <img src="/bin.svg"></img>

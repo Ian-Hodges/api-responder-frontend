@@ -41,7 +41,6 @@ html {
   flex: 1;
   background-color: #f4f4f4;
   color: #333;
-  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -88,29 +87,6 @@ h2.messageId {
   font-size: 13px;
 }
 
-div.button {
-  height: 20px;
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: white;
-  color: white;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-div.blue {
-  background-color: #007bff;
-}
-
-div.red {
-  background-color: red;
-}
-
 div.grey {
   background-color: grey;
 }
@@ -132,4 +108,26 @@ div.grey {
 
 div.spacer {
   width: 5px;
+}
+
+.info-badge {
+  display: inline-block;
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: white;
+}
+
+.method-get {
+  background-color: #007bff;
+}
+.method-post {
+  background-color: #38a169;
+}
+.method-put {
+  background-color: #d69e2e;
+}
+.method-delete {
+  background-color: #e53e3e;
 }
