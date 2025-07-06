@@ -2,6 +2,7 @@
 
 import { Call } from "@/lib/api-responder";
 import "@/calls/styles/info.css";
+import { DateTime } from "luxon";
 
 export default function Info({ call }: { call?: Call }) {
   if (!call) return <p className="info-placeholder">Select a call.</p>;
@@ -18,7 +19,7 @@ export default function Info({ call }: { call?: Call }) {
             <div className="header-row">
               <div className="header-key">Time:</div>
               <div className="header-value">
-                {call.request.requestContext.requestTime}
+                {DateTime.fromMillis(call.timeStamp).toFormat("dd/MM/yyyy HH:mm:ss:SSS")}
               </div>
             </div>
             <div className="header-row">

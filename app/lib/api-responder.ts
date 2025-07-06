@@ -3,6 +3,7 @@ interface RawCall {
   request: string;
   response: string;
   messageId: string;
+  timeStamp: number;
 }
 
 export interface Call {
@@ -10,6 +11,7 @@ export interface Call {
   request: Request;
   response: Response;
   messageId: string;
+  timeStamp: number;
 }
 
 export interface ResponderConfig {
@@ -21,12 +23,7 @@ interface Request {
   headers: Record<string, string>;
   path: string;
   body: string;
-  requestContext: RequestContext;
 }
-
-type RequestContext = {
-  requestTime: string;
-};
 
 interface Response {
   headers: Record<string, string>;
@@ -41,12 +38,11 @@ export async function getAllCallsByResponderId(
   const data = await fetch(url + `/${responderId}`);
   const rawData = (await data.json()) as RawCall[];
 
-  // Parse the Request and Response fields
   return rawData.map((item) => ({
     ...item,
     request: JSON.parse(item.request),
     response: JSON.parse(item.response),
-  }));
+  })).sort((a, b) => b.timeStamp - a.timeStamp);
 }
 
 export async function getConfigByResponderId(
