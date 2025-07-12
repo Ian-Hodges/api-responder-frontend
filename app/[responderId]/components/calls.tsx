@@ -1,8 +1,8 @@
 "use client";
 
-import "@/calls/styles/calls.css";
 import { Checkbox } from "@aws-amplify/ui-react";
 import { Call, ResponderConfig, getAllCallsByResponderId, getConfigByResponderId } from "@/lib/api-responder";
+import "../styles/calls.css";
 import List from "./list";
 import Info from "./info";
 import { useEffect, useState } from "react";

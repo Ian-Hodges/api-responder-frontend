@@ -1,5 +1,5 @@
-import "@/calls/styles/calls.css";
 import Calls from "./components/calls";
+import "./styles/calls.css";
 
 type PageProps = {
   params: Promise<{ responderId: string }>;

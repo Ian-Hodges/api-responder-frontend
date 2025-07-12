@@ -1,8 +1,8 @@
 "use client";
 
-import "@/calls/styles/config.css";
 import { z } from "zod";
 import { ResponderConfig, updateResponseStatus } from "@/lib/api-responder";
+import "../styles/config.css";
 
 const responseStatusSchema = z.object({
   responseStatus: z.coerce

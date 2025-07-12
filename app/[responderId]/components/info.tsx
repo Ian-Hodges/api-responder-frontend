@@ -1,8 +1,8 @@
 "use client";
 
 import { Call } from "@/lib/api-responder";
-import "@/calls/styles/info.css";
 import { DateTime } from "luxon";
+import "../styles/info.css";
 
 export default function Info({ call }: { call?: Call }) {
   if (!call) return <p className="info-placeholder">Select a call.</p>;
