@@ -35,15 +35,20 @@ export default function Config({
       return;
     }
 
-    const result = await updateResponseStatus(
-      responderId,
-      parseResult.data.responseStatus
-    );
+    await updateResponseStatus(responderId, parseResult.data.responseStatus);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="config-item">
+        <header>API Url</header>
+        <a
+          href={`http://api.apiresponder.net/${responderId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          http://api.apiresponder.net/{responderId}
+        </a>
         <header>Response Status</header>
         <input
           type="text"
