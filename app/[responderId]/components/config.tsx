@@ -47,7 +47,7 @@ export default function Config({
           target="_blank"
           rel="noopener noreferrer"
         >
-          http://api.apiresponder.net/{responderId}
+          {"http://api.apiresponder.net/"}&#8203;{responderId}
         </a>
         <header>Response Status</header>
         <input
