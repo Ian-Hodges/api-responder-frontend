@@ -19,7 +19,9 @@ export default function Info({ call }: { call?: Call }) {
             <div className="header-row">
               <div className="header-key">Time:</div>
               <div className="header-value">
-                {DateTime.fromMillis(call.timeStamp).toFormat("dd/MM/yyyy HH:mm:ss:SSS")}
+                {DateTime.fromMillis(call.timeStamp).toFormat(
+                  "dd/MM/yyyy HH:mm:ss:SSS"
+                )}
               </div>
             </div>
             <div className="header-row">
@@ -50,7 +52,16 @@ export default function Info({ call }: { call?: Call }) {
         <h2>Body</h2>
         <div className="body-table">
           <div className="body-row">
-            <pre className="info-body">{call.request.body}</pre>
+            <pre className="info-body">
+              {(() => {
+                try {
+                  const parsed = JSON.parse(call.request.body);
+                  return JSON.stringify(parsed, null, 2);
+                } catch {
+                  return call.request.body;
+                }
+              })()}
+            </pre>
           </div>
         </div>
       </div>
