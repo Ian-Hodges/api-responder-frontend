@@ -49,10 +49,13 @@ export default function Config({
         >
           {"http://api.apiresponder.net/"}&#8203;{responderId}
         </a>
+      </div>
+      <div className="config-item">
         <header>Response Status</header>
         <input
           type="text"
           name="responseStatus"
+          className="response-status-input"
           value={responderConfig?.responseStatus || ""}
           onChange={(e) =>
             setResponderConfig({
