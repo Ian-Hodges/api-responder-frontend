@@ -43,11 +43,11 @@ export default function Config({
       <div className="config-item">
         <header>API Url</header>
         <a
-          href={`http://api.apiresponder.net/${responderId}`}
+          href={`https://api.apiresponder.net/${responderId}`}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {"http://api.apiresponder.net/"}&#8203;{responderId}
+          {"https://api.apiresponder.net/"}&#8203;{responderId}
         </a>
       </div>
       <div className="config-item">
